@@ -1,0 +1,18 @@
+{
+  "entity_name": "F_B_I",
+  "base_type": "minecraft:zombie", 
+  "behavior": {
+    "is_hostile": true,
+    "attack_range": 16.0,
+    "movement_speed": 0.3,
+    "reactive_settings": {
+      "target_players": true,
+      "on_damage_received": "counter_attack",
+      "on_robbery_start": "aggro_all"
+    },
+    "equipment": {
+      "main_hand": "minecraft:bow",
+      "display_name": "FBI Service Weapon"
+    }
+  }
+}
