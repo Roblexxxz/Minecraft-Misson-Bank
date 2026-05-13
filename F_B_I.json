@@ -1,18 +1,46 @@
 {
-  "entity_name": "F_B_I",
-  "base_type": "minecraft:zombie", 
-  "behavior": {
-    "is_hostile": true,
-    "attack_range": 16.0,
-    "movement_speed": 0.3,
-    "reactive_settings": {
-      "target_players": true,
-      "on_damage_received": "counter_attack",
-      "on_robbery_start": "aggro_all"
+  "format_version": "1.10.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "mission:fbi_guard",
+      "is_spawnable": true,
+      "is_summonable": true
     },
-    "equipment": {
-      "main_hand": "minecraft:bow",
-      "display_name": "FBI Service Weapon"
+    "components": {
+      "minecraft:type_family": {
+        "family": ["fbi", "monster"]
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 1,
+        "must_see": true,
+        "re_evaluate_description": true,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 32
+          }
+        ]
+      },
+      "minecraft:behavior.ranged_attack": {
+        "priority": 2,
+        "attack_interval_min": 1.0,
+        "attack_interval_max": 2.0,
+        "attack_radius": 20.0
+      }
     }
   }
 }
