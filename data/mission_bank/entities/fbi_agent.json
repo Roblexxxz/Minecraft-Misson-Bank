@@ -1,0 +1,27 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "mission_bank:fbi_agent",
+      "is_spawnable": true,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": { "family": ["fbi", "mob", "monster"] },
+      "minecraft:health": { "value": 30, "max": 30 },
+      "minecraft:movement": { "value": 0.35 },
+      "minecraft:attack": { "damage": 5 },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 1,
+        "entity_types": [
+          { "filters": { "test": "is_family", "subject": "other", "value": "player" }, "max_dist": 32 }
+        ]
+      },
+      "minecraft:behavior.ranged_attack": {
+        "priority": 2,
+        "burst_shots": 3,
+        "attack_radius": 25
+      }
+    }
+  }
+}
